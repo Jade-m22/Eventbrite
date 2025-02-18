@@ -3,6 +3,9 @@ source "https://rubygems.org"
 ruby "3.4.1"
 
 gem "devise"
+gem "faker"
+gem 'letter_opener', group: :development
+
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem "rails", "~> 8.0.1"

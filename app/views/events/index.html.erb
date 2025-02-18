@@ -1,0 +1,15 @@
+<h1 class="mb-4">Liste des événements</h1>
+
+<% @events.each do |event| %>
+  <div class="card mb-4">
+    <div class="card-body">
+      <h5 class="card-title"><%= event.title %></h5>
+      <p class="card-text"><strong>Description:</strong> <%= event.description %></p>
+      <p class="card-text"><strong>Date de début:</strong> <%= event.start_date.strftime("%d %b %Y %H:%M") %></p>
+      <p class="card-text"><strong>Durée:</strong> <%= event.duration %> heures</p>
+      <p class="card-text"><strong>Prix:</strong> <%= number_to_currency(event.price, unit: "€") %></p>
+      <p class="card-text"><strong>Lieu:</strong> <%= event.location %></p>
+      <%= link_to "Voir l'événement", event_path(event), class: "btn btn-primary" %>
+    </div>
+  </div>
+<% end %>

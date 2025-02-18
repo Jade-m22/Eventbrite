@@ -1,0 +1,15 @@
+<h1 class="mb-4"><%= @event.title %></h1>
+
+<div class="card mb-4">
+  <div class="card-body">
+    <h5 class="card-title">Détails de l'événement</h5>
+    
+    <p class="card-text"><strong>Description:</strong> <%= @event.description %></p>
+    <p class="card-text"><strong>Date de début:</strong> <%= @event.start_date.strftime("%d %b %Y %H:%M") %></p>
+    <p class="card-text"><strong>Durée:</strong> <%= @event.duration %> heures</p>
+    <p class="card-text"><strong>Prix:</strong> <%= number_to_currency(@event.price, unit: "€") %></p>
+    <p class="card-text"><strong>Lieu:</strong> <%= @event.location %></p>
+  </div>
+</div>
+
+<%= link_to 'Retour à la liste des événements', events_path, class: "btn btn-secondary" %>

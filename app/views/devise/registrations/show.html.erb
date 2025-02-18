@@ -1,0 +1,7 @@
+<h1>Mon Profil</h1>
+
+<p><strong>Prénom:</strong> <%= current_user.first_name %></p>
+<p><strong>Nom:</strong> <%= current_user.last_name %></p>
+<p><strong>Description:</strong> <%= current_user.description.presence || "Pas encore de description." %></p>
+
+<%= link_to "Modifier mon profil", edit_user_registration_path, class: "btn btn-primary" %>
