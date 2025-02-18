@@ -1,0 +1,72 @@
+/* --- Personnalisation des cartes --- */
+
+/* Style de la carte */
+.custom-card {
+  background-color: #ffffff; /* Fond blanc */
+  border-radius: 10px; /* Coins arrondis */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Ombre douce */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Effet de survol de la carte */
+.custom-card:hover {
+  transform: translateY(-10px); /* Légère élévation */
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2); /* Ombre plus marquée */
+}
+
+/* --- Boutons --- */
+
+.btn-custom {
+  background-color: #ecaacb; /* Vert pour le bouton */
+  color: rgb(0, 0, 0);
+  border: none;
+  padding: 10px 20px;
+  font-size: 1rem;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.btn-custom:hover {
+  background-color: #4a0044; /* Vert foncé au survol */
+  color: white;
+}
+
+/* --- Style de la carte (corps de la carte) --- */
+
+.card-body {
+  background-color: #fafafa; /* Fond gris clair dans la carte */
+  padding: 20px;
+}
+
+/* Titre des cartes */
+.card-title {
+  font-size: 1.25rem;
+  font-weight: 500;
+  color: #4a043e;
+  margin-bottom: 15px;
+}
+
+/* Texte des cartes */
+.card-text {
+  color: #333333; /* Gris foncé pour le texte */
+  line-height: 1.6;
+  font-size: 0.95rem;
+}
+
+/* --- Réactivité (Responsive Design) --- */
+
+@media (max-width: 768px) {
+  .custom-card {
+      width: 100%; /* Les cartes prennent toute la largeur sur petits écrans */
+  }
+}
+
+/* --- Truncate pour descriptions longues --- */
+
+.card-text.truncated {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 100%;
+  display: block;
+}

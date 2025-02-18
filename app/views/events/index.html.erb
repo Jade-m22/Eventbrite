@@ -1,15 +1,27 @@
-<h1 class="mb-4">Liste des événements</h1>
+<h1 class="mb-4 text-center text-dark">Liste des événements</h1>
 
-<% @events.each do |event| %>
-  <div class="card mb-4">
-    <div class="card-body">
-      <h5 class="card-title"><%= event.title %></h5>
-      <p class="card-text"><strong>Description:</strong> <%= event.description %></p>
-      <p class="card-text"><strong>Date de début:</strong> <%= event.start_date.strftime("%d %b %Y %H:%M") %></p>
-      <p class="card-text"><strong>Durée:</strong> <%= event.duration %> heures</p>
-      <p class="card-text"><strong>Prix:</strong> <%= number_to_currency(event.price, unit: "€") %></p>
-      <p class="card-text"><strong>Lieu:</strong> <%= event.location %></p>
-      <%= link_to "Voir l'événement", event_path(event), class: "btn btn-primary" %>
+<div class="row">
+  <% @events.each do |event| %>
+    <div class="col-md-4 mb-4">
+      <div class="card shadow-sm custom-card">
+        <div class="card-body">
+          <h5 class="card-title text-center"><%= event.title %></h5>
+          
+          <% # Limiter la longueur de la description %>
+          <p class="card-text"><strong>Description:</strong> <%= truncate(event.description, length: 120, omission: '...') %></p>
+          
+          <p class="card-text"><strong>Date de début:</strong> <%= event.start_date.strftime("%d %b %Y %H:%M") %></p>
+          <p class="card-text"><strong>Durée:</strong> <%= event.duration %> heures</p>
+          <p class="card-text"><strong>Prix:</strong> <%= number_to_currency(event.price, unit: "€") %></p>
+          <p class="card-text"><strong>Lieu:</strong> <%= event.location %></p>
+          
+          <div class="d-flex justify-content-between align-items-center mt-3">
+            <%= link_to "Voir l'événement", event_path(event), class: "btn btn-custom" %>
+          </div>
+        </div>
+      </div>
     </div>
-  </div>
-<% end %>
+  <% end %>
+</div>
+
+<%= stylesheet_link_tag "styles" %>
