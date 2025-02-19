@@ -1,7 +1,7 @@
 class Attendance < ApplicationRecord
   belongs_to :event
   belongs_to :user
-  validates :stripe_customer_id, presence: true
+  validates :stripe_customer_id, presence: true, unless: -> { event.is_free? }
 
   after_create :send_participant_email
 

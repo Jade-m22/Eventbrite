@@ -1,0 +1,35 @@
+<h3 class="text-primary fw-bold mb-4">📅 Mes Événements</h3>
+
+<% if current_user.events.any? %>
+  <% current_user.events.each do |event| %>
+    <div class="card mb-3 shadow-sm border-0">
+      <div class="card-body">
+        <h5 class="card-title">
+          <%= link_to event.title, event_path(event), class: "text-decoration-none text-dark fw-bold" %>
+        </h5>
+        <p class="mb-1"><strong>📆 Date :</strong> <%= event.start_date.strftime("%d %b %Y à %H:%M") %></p>
+        <p class="mb-2"><strong>👥 Participants :</strong> <%= event.participants.count %></p>
+
+        <% if event.participants.any? %>
+          <ul class="list-group list-group-flush">
+            <% event.participants.each do |participant| %>
+              <li class="list-group-item d-flex justify-content-between align-items-center">
+                <span>
+                  <strong><%= participant.first_name %> <%= participant.last_name %></strong>
+                  (<%= participant.email %>)
+                </span>
+                <span class="badge bg-primary rounded-pill">🎟️ Inscrit</span>
+              </li>
+            <% end %>
+          </ul>
+        <% else %>
+          <p class="text-muted fst-italic">Aucun participant pour le moment.</p>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+<% else %>
+  <div class="alert alert-warning text-center" role="alert">
+    🎭 Tu n'as créé aucun événement.
+  </div>
+<% end %>

@@ -4,7 +4,7 @@ class User < ApplicationRecord
     has_many :events, dependent: :destroy
     has_many :attendances
     has_many :events_participated, through: :attendances, source: :event
-  
+
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
@@ -15,5 +15,9 @@ class User < ApplicationRecord
 
   def send_welcome_email
     UserMailer.welcome_email(self).deliver_later
+  end
+
+  def is_free?
+    price.zero?
   end
 end

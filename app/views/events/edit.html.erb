@@ -1,0 +1,37 @@
+<h1>Modifier l'événement</h1>
+
+<%= form_with(model: @event, local: true) do |form| %>
+  <div class="mb-3">
+    <%= form.label :title, "Titre de l'événement" %>
+    <%= form.text_field :title, class: "form-control" %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label :description, "Description" %>
+    <%= form.text_area :description, class: "form-control" %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label :start_date, "Date de début" %>
+    <%= form.datetime_select :start_date, class: "form-control" %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label :duration, "Durée (en heures)" %>
+    <%= form.number_field :duration, class: "form-control" %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label :price, "Prix (€)" %>
+    <%= form.number_field :price, class: "form-control" %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label :location, "Lieu" %>
+    <%= form.text_field :location, class: "form-control" %>
+  </div>
+
+  <%= form.submit "Mettre à jour", class: "btn btn-primary" %>
+<% end %>
+
+<%= link_to "Annuler", @event, class: "btn btn-secondary" %>

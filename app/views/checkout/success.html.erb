@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Paiement accepté</title>
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
+
+  <%= stylesheet_link_tag "application", media: "all", "data-turbo-track": "reload" %>
+  <%= javascript_include_tag "application", "data-turbo-track": "reload" %>
+</head>
+<body>
+  <div class="container text-center">
+    <h1>Paiement accepté</h1>
+    <%= link_to 'Retour à l\'accueil', events_path, class: "btn btn-secondary" %>
+  </div>
+</body>
+</html>

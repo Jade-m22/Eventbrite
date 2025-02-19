@@ -1,31 +1,121 @@
-<h2>Se connecter</h2>
+<!DOCTYPE html>
+<html lang="fr">
 
-<%= form_for(resource, as: resource_name, url: session_path(resource_name), html: { class: "needs-validation", novalidate: true }) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Connexion | Eventbrite</title>
 
-  <div class="mb-3">
-    <%= f.label :email, class: "form-label" %>
-    <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control" %>
-  </div>
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
 
-  <div class="mb-3">
-    <%= f.label :password, class: "form-label" %>
-    <%= f.password_field :password, autocomplete: "current-password", class: "form-control" %>
-  </div>
+  <!-- Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
 
-  <% if devise_mapping.rememberable? %>
-    <div class="form-check mb-3">
-      <%= f.check_box :remember_me, class: "form-check-input" %>
-      <%= f.label :remember_me, class: "form-check-label" %>
+  <!-- CSS principal -->
+  <%= stylesheet_link_tag "application", media: "all", "data-turbo-track": "reload" %>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;600&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      font-family: 'Nunito', sans-serif;
+      background-color: #f8f9fa;
+    }
+
+    .login-card {
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      padding: 30px;
+      max-width: 450px;
+      margin: auto;
+      transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    }
+
+    .login-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    .form-control {
+      border-radius: 6px;
+    }
+
+    .btn-custom {
+      background-color: #ecaacb;
+      color: rgb(0, 0, 0);
+      border-radius: 6px;
+      font-weight: bold;
+      padding: 10px 20px;
+      width: 100%;
+      transition: background-color 0.3s ease;
+    }
+
+    .btn-custom:hover {
+      background-color: #4a0044;
+      color: white;
+    }
+
+    .forgot-password {
+      font-size: 0.9rem;
+      color: #6c757d;
+      text-decoration: none;
+    }
+
+    .forgot-password:hover {
+      color: #4a0044;
+      text-decoration: underline;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="container mt-5">
+    <div class="login-card">
+      <h2 class="mb-4 text-center text-primary fw-bold">🔐 Connexion</h2>
+
+      <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: { class: "needs-validation p-3", novalidate: true }) do |f| %>
+        <%= render "devise/shared/error_messages", resource: resource %>
+
+        <div class="mb-3">
+          <%= f.label :email, class: "form-label" %>
+          <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control", placeholder: "Votre email" %>
+        </div>
+
+        <div class="mb-3">
+          <%= f.label :password, class: "form-label" %>
+          <%= f.password_field :password, autocomplete: "current-password", class: "form-control", placeholder: "Votre mot de passe" %>
+        </div>
+
+        <% if devise_mapping.rememberable? %>
+          <div class="form-check mb-3">
+            <%= f.check_box :remember_me, class: "form-check-input" %>
+            <%= f.label :remember_me, class: "form-check-label" %>
+          </div>
+        <% end %>
+
+        <div class="mb-3">
+          <%= f.submit "🚀 Se connecter", class: "btn btn-custom" %>
+        </div>
+      <% end %>
+
+      <!-- Lien pour mot de passe oublié -->
+      <div class="text-center">
+        <%= link_to "🔑 Mot de passe oublié ?", new_password_path(resource_name), class: "forgot-password" %>
+      </div>
+
+      <div class="mt-3 text-center">
+        <%= render "devise/shared/links" %>
+      </div>
     </div>
-  <% end %>
-
-  <div class="actions">
-    <%= f.submit "Se connecter", class: "btn btn-primary w-100" %>
   </div>
-<% end %>
 
-<!-- Lien pour mot de passe oublié -->
-<%= link_to "Mot de passe oublié ?", new_password_path(resource_name), class: "d-block text-center mt-3" %>
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 
-<%= render "devise/shared/links" %>
+</body>
+
+</html>

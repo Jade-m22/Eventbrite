@@ -1,64 +1,147 @@
-<h2>Modifier <%= resource_name.to_s.humanize %></h2>
+<!DOCTYPE html>
+<html lang="fr">
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put, class: 'p-4 shadow-sm rounded' }) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Modifier mon profil | Eventbrite</title>
 
-  <div class="mb-3">
-    <%= f.label :first_name, class: "form-label" %>
-    <%= f.text_field :first_name, class: "form-control" %>
-  </div>
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
 
-  <div class="mb-3">
-    <%= f.label :last_name, class: "form-label" %>
-    <%= f.text_field :last_name, class: "form-control" %>
-  </div>
+  <!-- Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
 
-  <div class="mb-3">
-    <%= f.label :description, class: "form-label" %>
-    <%= f.text_area :description, class: "form-control" %>
-  </div>
+  <!-- CSS principal -->
+  <%= stylesheet_link_tag "application", media: "all", "data-turbo-track": "reload" %>
 
-  <div class="mb-3">
-    <%= f.label :email, class: "form-label" %>
-    <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control" %>
-  </div>
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;600&display=swap" rel="stylesheet">
 
-  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-    <div class="alert alert-warning">
-      Actuellement en attente de confirmation pour : <%= resource.unconfirmed_email %>
+  <style>
+    body {
+      font-family: 'Nunito', sans-serif;
+      background-color: #f8f9fa;
+    }
+
+    .profile-edit-card {
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      padding: 30px;
+      max-width: 600px;
+      margin: auto;
+      transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    }
+
+    .profile-edit-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    .btn-custom {
+      background-color: #ecaacb;
+      color: rgb(0, 0, 0);
+      border-radius: 6px;
+      font-weight: bold;
+      padding: 10px 20px;
+      width: 100%;
+      transition: background-color 0.3s ease;
+    }
+
+    .btn-custom:hover {
+      background-color: #4a0044;
+      color: white;
+    }
+
+    .alert-danger {
+      background-color: #ffe5e5;
+      border-color: #ffb3b3;
+      color: #a60000;
+    }
+
+    .form-control {
+      border-radius: 6px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="container mt-5">
+    <div class="profile-edit-card">
+      <h2 class="mb-4 text-center text-primary fw-bold">✏️ Modifier mon profil</h2>
+
+      <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put, class: 'p-3' }) do |f| %>
+        <%= render "devise/shared/error_messages", resource: resource %>
+
+        <div class="mb-3">
+          <%= f.label :first_name, class: "form-label fw-bold" %>
+          <%= f.text_field :first_name, class: "form-control", placeholder: "Votre prénom" %>
+        </div>
+
+        <div class="mb-3">
+          <%= f.label :last_name, class: "form-label fw-bold" %>
+          <%= f.text_field :last_name, class: "form-control", placeholder: "Votre nom" %>
+        </div>
+
+        <div class="mb-3">
+          <%= f.label :description, class: "form-label fw-bold" %>
+          <%= f.text_area :description, class: "form-control", placeholder: "Décrivez-vous en quelques mots..." %>
+        </div>
+
+        <div class="mb-3">
+          <%= f.label :email, class: "form-label fw-bold" %>
+          <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control", placeholder: "Votre email" %>
+        </div>
+
+        <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+          <div class="alert alert-warning">
+            📧 En attente de confirmation pour : <%= resource.unconfirmed_email %>
+          </div>
+        <% end %>
+
+        <div class="mb-3">
+          <%= f.label :password, class: "form-label fw-bold" %>
+          <small class="text-muted">(laissez vide si vous ne souhaitez pas le modifier)</small>
+          <%= f.password_field :password, autocomplete: "new-password", class: "form-control", placeholder: "Nouveau mot de passe" %>
+          <% if @minimum_password_length %>
+            <small class="text-muted"><%= @minimum_password_length %> caractères minimum</small>
+          <% end %>
+        </div>
+
+        <div class="mb-3">
+          <%= f.label :password_confirmation, class: "form-label fw-bold" %>
+          <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control", placeholder: "Confirmez le mot de passe" %>
+        </div>
+
+        <div class="mb-3">
+          <%= f.label :current_password, class: "form-label fw-bold" %>
+          <small class="text-muted">(Requis pour confirmer vos modifications)</small>
+          <%= f.password_field :current_password, autocomplete: "current-password", class: "form-control", placeholder: "Mot de passe actuel" %>
+        </div>
+
+        <div class="mb-4">
+          <%= f.submit "💾 Mettre à jour", class: "btn btn-custom" %>
+        </div>
+      <% end %>
+
+      <!-- Suppression du compte -->
+      <h3 class="text-danger fw-bold mt-4">❌ Annuler mon compte</h3>
+      <div class="alert alert-danger">
+        Vous n'êtes pas satisfait ? <%= button_to "Supprimer mon compte", registration_path(resource_name), method: :delete, data: { confirm: "Êtes-vous sûr de vouloir supprimer votre compte ?" }, class: "btn btn-danger mt-2" %>
+      </div>
+
+      <!-- Lien de retour -->
+      <div class="text-center mt-3">
+        <%= link_to "⬅️ Retour", user_profile_path, class: "btn btn-outline-secondary" %>
+      </div>
     </div>
-  <% end %>
-
-  <div class="mb-3">
-    <%= f.label :password, class: "form-label" %>
-    <i>(laissez vide si vous ne souhaitez pas le modifier)</i><br />
-    <%= f.password_field :password, autocomplete: "new-password", class: "form-control" %>
-    <% if @minimum_password_length %>
-      <br />
-      <em><%= @minimum_password_length %> caractères minimum</em>
-    <% end %>
   </div>
 
-  <div class="mb-3">
-    <%= f.label :password_confirmation, class: "form-label" %>
-    <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control" %>
-  </div>
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 
-  <div class="mb-3">
-    <%= f.label :current_password, class: "form-label" %>
-    <i>(nous avons besoin de votre mot de passe actuel pour confirmer vos modifications)</i><br />
-    <%= f.password_field :current_password, autocomplete: "current-password", class: "form-control" %>
-  </div>
+</body>
 
-  <div class="mb-3">
-    <%= f.submit "Mettre à jour", class: "btn btn-primary w-100" %>
-  </div>
-<% end %>
-
-<h3>Annuler mon compte</h3>
-
-<div class="alert alert-danger">
-  Pas satisfait ? <%= button_to "Annuler mon compte", registration_path(resource_name), data: { confirm: "Êtes-vous sûr ?", turbo_confirm: "Êtes-vous sûr ?" }, method: :delete, class: "btn btn-danger" %>
-</div>
-
-<%= link_to "Retour", :back, class: "btn btn-secondary" %>
+</html>
