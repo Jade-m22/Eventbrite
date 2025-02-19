@@ -8,7 +8,6 @@ class AttendancesController < ApplicationController
       redirect_to events_path, alert: "Cette participation n'existe pas."
     else
       @event = @attendance.event
-      puts "DEBUG - Attendance ID: #{@attendance.id}, Event ID: #{@event.id}, Event Title: #{@event.title}, Event Price: #{@event.price}"
     end
   end
 
@@ -27,7 +26,6 @@ class AttendancesController < ApplicationController
       return
     end
 
-    # Si l'événement est payant, on redirige vers Stripe
     redirect_to checkout_create_path(event_id: @event.id)
   end
 

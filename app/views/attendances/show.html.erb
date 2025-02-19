@@ -2,10 +2,6 @@
 
   <h1 class="mb-4">Je participe à <%= @event.title %></h1>
 
-<p>DEBUG - Event ID: <%= @event.id %></p>
-<p>DEBUG - Event Title: <%= @event.title %></p>
-<p>DEBUG - Event Price: <%= @event.price %>€</p>
-
 <%= button_to "Passer commande", checkout_create_path(total: @event.price, event_id: @event.title), class: "btn btn-custom", data: { turbo: false } %>
 
 <%= link_to 'Retour à la liste des événements', events_path, class: "btn btn-custom" %>
