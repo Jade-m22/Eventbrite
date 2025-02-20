@@ -25,7 +25,7 @@
 
   <div class="container mt-5">
     <div class="profile-edit-card">
-      <h2 class="mb-4 text-center text-primary fw-bold">✏️ Modifier mon profil</h2>
+      <h2 class="mb-4 text-center fw-bold">✏️ Modifier mon profil</h2>
 
       <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put, class: 'p-3' }) do |f| %>
         <%= render "devise/shared/error_messages", resource: resource %>

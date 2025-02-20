@@ -1,4 +1,5 @@
 class Event < ApplicationRecord
+  has_one_attached :event_picture
   belongs_to :user
   has_many :attendances, dependent: :destroy
   has_many :participants, through: :attendances, source: :user

@@ -1,0 +1,50 @@
+/* 📌 Conteneur du formulaire */
+.event-form-container {
+  max-width: 600px;
+  margin: 40px auto;
+  background: white;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.event-form-container:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* 🎭 Titres */
+h1 {
+  color: #4a0044;
+  text-align: center;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+/* 🏷️ Labels */
+.form-label {
+  font-weight: bold;
+  color: #4a0044;
+  margin-bottom: 5px;
+}
+
+/* ✏️ Champs de formulaire */
+.form-control {
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  padding: 10px;
+  font-size: 1rem;
+  transition: border-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.form-control:focus {
+  border-color: #ecaacb;
+  box-shadow: 0 0 8px rgba(236, 170, 203, 0.5);
+}
+
+/* Lien retour */
+.text-center .btn-outline-secondary {
+  margin-top: 10px;
+  font-weight: bold;
+}

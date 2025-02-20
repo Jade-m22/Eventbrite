@@ -1,6 +1,8 @@
 class User < ApplicationRecord
   after_create :send_welcome_email
 
+  has_one_attached :avatar
+
     has_many :events, dependent: :destroy
     has_many :attendances
     has_many :events_participated, through: :attendances, source: :event

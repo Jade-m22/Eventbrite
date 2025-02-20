@@ -26,7 +26,7 @@
 
   <div class="container mt-5">
     <div class="login-card">
-      <h2 class="mb-4 text-center text-primary fw-bold">🔐 Connexion</h2>
+      <h2 class="mb-4 text-center fw-bold">🔐 Connexion</h2>
 
       <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: { class: "needs-validation p-3", novalidate: true }) do |f| %>
         <%= render "devise/shared/error_messages", resource: resource %>

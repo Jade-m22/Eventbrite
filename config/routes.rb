@@ -12,10 +12,12 @@ Rails.application.routes.draw do
     registrations: "users/registrations",
     passwords: "users/passwords"
   }
+
   resources :events do
     collection do
       get :my_events
     end
+    resources :event_pictures, only: [ :create ]
   end
 
   resources :attendances, only: %i[ create show ]

@@ -1,12 +1,105 @@
-/*
- * This is a manifest file that'll be compiled into application.css.
- *
- * With Propshaft, assets are served efficiently without preprocessing steps. You can still include
- * application-wide styles in this file, but keep in mind that CSS precedence will follow the standard
- * cascading order, meaning styles declared later in the document or manifest will override earlier ones,
- * depending on specificity.
- *
- * Consider organizing styles into separate files for maintainability.
- */
-/*= require bootstrap */
+/* 🌟 Style global */
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@300;600&display=swap');
 
+body {
+  font-family: 'Nunito', sans-serif !important;
+  background-color: #f8f9fa;
+  color: #333;
+}
+
+/* 🌐 Navbar */
+.navbar {
+  background-color: #ffffff;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-brand {
+  font-weight: bold;
+  color: #4a0044 !important;
+}
+
+.navbar-nav .nav-link {
+  color: #4a0044 !important;
+  font-weight: 600;
+}
+
+.navbar-nav .btn {
+  font-weight: bold;
+  border-radius: 6px;
+}
+
+/* 🎨 Bouton personnalisé */
+.btn-custom {
+  background-color: #ecaacb;
+  color: rgb(0, 0, 0);
+  border-radius: 6px;
+  font-weight: bold;
+  padding: 10px 20px;
+  border: 2px solid #4a0044;
+  transition: background-color 0.3s ease;
+  display: inline-block;
+  text-decoration: none !important;
+}
+
+.btn-custom:hover {
+  background-color: #4a0044;
+  color: white;
+}
+
+/* 🎟️ Badge personnalisé */
+.badge.bg-primary {
+  background-color: #4a0044 !important;
+  color: #ffffff !important;
+  font-weight: bold;
+}
+
+/* 📌 Conteneur principal */
+.container {
+  margin-top: 20px;
+}
+
+/* 🏷️ Titre des cartes événements */
+.card-title-event {
+  font-size: 1.3rem; /* Augmentation de la taille */
+  font-weight: 900; /* Texte en gras */
+  color: #4a0044; /* Couleur prune */
+  text-align: center; /* Centrage */
+  text-transform: uppercase; /* Majuscules pour plus d'impact */
+  letter-spacing: 1px; /* Espacement des lettres pour une meilleure lisibilité */
+  margin-bottom: 10px;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1); /* Ombre subtile */
+}
+
+/* 📌 Conteneur des cartes */
+.row-event {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+/* 🎟️ Style des cartes événements */
+.custom-card-event {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* 🔥 Équilibre le contenu */
+  width: 100%;
+  max-width: 400px; /* 🔥 Ajuste la largeur pour avoir 3 cartes par ligne */
+  height: auto; /* 🔥 Réduit la hauteur */
+  min-height: 10px;
+  padding: 15px;
+  border-radius: 8px;
+  background-color: #fff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease-in-out;
+}
+
+@media (min-width: 992px) {
+  .col-md-4 {
+    flex: 0 0 calc(33.333% - 20px); /* 🔥 Assure 3 cartes par ligne */
+  }
+}
+
+/* 🎭 Effet au survol */
+.custom-card-event:hover {
+  transform: translateY(-5px);
+}

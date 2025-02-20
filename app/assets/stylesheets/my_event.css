@@ -1,0 +1,54 @@
+/* 📅 Titres et section */
+h3.fw-bold {
+  color: #4a0044;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+/* 🃏 Carte événement */
+.card {
+  border-radius: 12px;
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+}
+
+/* 📌 Titre de l'événement */
+.card-title a {
+  color: #4a0044;
+  transition: color 0.3s ease-in-out;
+}
+
+.card-title a:hover {
+  color: #ecaacb;
+}
+
+/* 📆 Détails de l'événement */
+.card-body p {
+  font-size: 16px;
+  color: #333;
+}
+
+/* 👥 Liste des participants */
+.list-group-item {
+  background-color: #fff;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 6px;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.list-group-item:hover {
+  background-color: #f8f9fa;
+}
+
+/* 🚨 Message quand aucun événement */
+.alert-warning {
+  background-color: #f4c2c2;
+  color: #4a0044;
+  font-weight: bold;
+  border-radius: 12px;
+}

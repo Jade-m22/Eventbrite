@@ -1,38 +1,40 @@
-<!-- app/views/events/new.html.erb -->
+<%= stylesheet_link_tag "new_event", media: "all", "data-turbo-track": "reload" %>
 <h1>Créer un nouvel événement</h1>
 
-<%= form_with model: @event, local: true do |form| %>
-  <div class="form-group">
-    <%= form.label :title, "Titre de l'événement" %>
-    <%= form.text_field :title, class: "form-control" %>
-  </div>
+<div class="event-form-container">
+  <%= form_with model: @event, local: true do |form| %>
+    <div class="form-group">
+      <%= form.label :title, "Titre de l'événement" %>
+      <%= form.text_field :title, class: "form-control" %>
+    </div>
 
-  <div class="form-group">
-    <%= form.label :description, "Description de l'événement" %>
-    <%= form.text_area :description, class: "form-control" %>
-  </div>
+    <div class="form-group">
+      <%= form.label :description, "Description de l'événement" %>
+      <%= form.text_area :description, class: "form-control" %>
+    </div>
 
-  <div class="form-group">
-    <%= form.label :price, "Prix de l'événement (en €)" %>
-    <%= form.number_field :price, class: "form-control" %>
-  </div>
+    <div class="form-group">
+      <%= form.label :price, "Prix de l'événement (en €)" %>
+      <%= form.number_field :price, class: "form-control" %>
+    </div>
 
-  <div class="form-group">
-    <%= form.label :location, "Lieu de l'événement" %>
-    <%= form.text_field :location, class: "form-control" %>
-  </div>
+    <div class="form-group">
+      <%= form.label :location, "Lieu de l'événement" %>
+      <%= form.text_field :location, class: "form-control" %>
+    </div>
 
-  <div class="form-group">
-    <%= form.label :start_date, "Date et heure de début" %>
-    <%= form.datetime_local_field :start_date, class: "form-control" %>
-  </div>
+    <div class="form-group">
+      <%= form.label :start_date, "Date et heure de début" %>
+      <%= form.datetime_local_field :start_date, class: "form-control" %>
+    </div>
 
-  <div class="form-group">
-    <%= form.label :duration, "Durée de l'événement (en heures)" %>
-    <%= form.number_field :duration, class: "form-control" %>
-  </div>
+    <div class="form-group">
+      <%= form.label :duration, "Durée de l'événement (en heures)" %>
+      <%= form.number_field :duration, class: "form-control" %>
+    </div><br>
 
-  <div class="form-group">
-    <%= form.submit "Créer l'événement", class: "btn btn-primary" %>
-  </div>
-<% end %>
+    <div class="form-group">
+      <%= form.submit "Créer l'événement", class: "btn-custom" %>
+    </div>
+  <% end %>
+</div>

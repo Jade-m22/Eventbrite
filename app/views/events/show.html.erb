@@ -26,7 +26,15 @@
     <div class="row justify-content-center">
       <div class="col-md-8">
         <div class="event-card p-4">
-          <h1 class="mb-3 text-center fw-bold text-primary"><%= @event.title %></h1>
+
+          <% if @event.event_picture.attached? %>
+            <%= image_tag @event.event_picture, alt: 'event_picture', class: "event-image" %>
+          <% else %>
+            <p>=== Il n'y a pas encore d'image liée à cet événement ===</p>
+          <% end %>
+
+
+          <h1 class="mb-3 text-center fw-bold"><%= @event.title %></h1>
 
           <div class="mb-4">
             <h5 class="fw-bold text-secondary">Détails de l'événement</h5>
@@ -53,9 +61,9 @@
                 <% if @event.is_free? %>
                   <%= button_to "🎟️ Rejoindre gratuitement", attendances_path(event_id: @event.id), method: :post, class: "btn btn-custom me-3" %>
                 <% else %>
-                  <%= button_to "💳 Payer et rejoindre", checkout_create_path(total: @event.price, event_id: @event.id), method: :post, class: "btn btn-custom me-3", data: { turbo: false } %>
+                  <%= button_to "💳 Payer et rejoindre", checkout_create_path(total: @event.price, event_id: @event.id), method: :post, class: "btn-custom", data: { turbo: false } %>
                 <% end %>
-              <% else %>
+              <% elsif current_user != @event.user %>
                 <p class="text-success fw-bold">✅ Tu es déjà inscrit.</p>
               <% end %>
             <% else %>
@@ -70,7 +78,20 @@
               <%= link_to "✏️ Modifier", edit_event_path(@event), class: "btn btn-warning me-2" %>
               <%= button_to "🗑️ Supprimer", event_path(@event), method: :delete, data: { confirm: "Es-tu sûr de vouloir supprimer cet événement ?" }, class: "btn btn-danger" %>
             </div>
+
+            <div class="update-image-card text-center mt-5 p-4">
+              <h3 class="fw-bold text-secondary">📸 Changer d'image ?</h3>
+                <%= form_tag event_event_pictures_path(@event), multipart: true, class: "update-image-form mt-3" do %>
+                <div class="custom-file">
+                  <%= file_field_tag :event_picture, class: "custom-file-input" %>
+                </div>
+                <%= submit_tag "Mettre à jour", class: "btn btn-custom mt-3" %>
+              <% end %>
+              </div>
           <% end %>
+          
+
+
         </div>
       </div>
     </div>

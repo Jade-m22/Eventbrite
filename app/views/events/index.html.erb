@@ -1,24 +1,24 @@
 <%= stylesheet_link_tag "styles" %>
 <h1 class="mb-4 text-center text-dark">Liste des événements</h1>
 
-<div class="row">
+<div class="row-event">
   <% @events.each do |event| %>
     <div class="col-md-4 mb-4">
-      <div class="card shadow-sm custom-card">
-        <div class="card-body">
-          <h5 class="card-title text-center"><%= event.title %></h5>
+      <div class="card shadow-sm custom-card-event">
+        <div class="card-body flex-column">
+          <h5 class="card-title-event text-center"><%= event.title %></h5>
           
           <% # Limiter la longueur de la description %>
-          <p class="card-text"><strong>Description:</strong> <%= truncate(event.description, length: 120, omission: '...') %></p>
+          <p class="card-text-event"><strong>Description:</strong> <%= truncate(event.description, length: 120, omission: '...') %></p>
           
-          <p class="card-text"><strong>Date de début:</strong> <%= event.start_date.strftime("%d %b %Y %H:%M") %></p>
-          <p class="card-text"><strong>Durée:</strong> <%= event.duration %> heures</p>
-          <p class="card-text"><strong>Prix:</strong> <%= number_to_currency(event.price, unit: "€") %></p>
-          <p class="card-text"><strong>Lieu:</strong> <%= event.location %></p>
-          <p class="card-text"><strong>Organisateur:</strong> <%= event.user.first_name %> <%= event.user.last_name %></p>
+          <p class="card-text-event"><strong>Date de début:</strong> <%= event.start_date.strftime("%d %b %Y %H:%M") %></p>
+          <p class="card-text-event"><strong>Durée:</strong> <%= event.duration %> heures</p>
+          <p class="card-text-event"><strong>Prix:</strong> <%= number_to_currency(event.price, unit: "€") %></p>
+          <p class="card-text-event"><strong>Lieu:</strong> <%= event.location %></p>
+          <p class="card-text-event"><strong>Organisateur:</strong> <%= event.user.first_name %> <%= event.user.last_name %></p>
           
           <div class="d-flex justify-content-between align-items-center mt-3">
-            <%= link_to "Voir l'événement", event_path(event), class: "btn btn-custom" %>
+            <%= link_to "Voir l'événement", event_path(event), class: "btn-custom" %>
           </div>
         </div>
       </div>

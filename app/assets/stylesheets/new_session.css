@@ -1,8 +1,3 @@
-.body {
-  font-family: 'Nunito', sans-serif;
-  background-color: #f8f9fa;
-}
-
 .login-card {
   background: white;
   border-radius: 12px;
@@ -20,21 +15,6 @@
 
 .form-control {
   border-radius: 6px;
-}
-
-.btn-custom {
-  background-color: #ecaacb;
-  color: rgb(0, 0, 0);
-  border-radius: 6px;
-  font-weight: bold;
-  padding: 10px 20px;
-  width: 100%;
-  transition: background-color 0.3s ease;
-}
-
-.btn-custom:hover {
-  background-color: #4a0044;
-  color: white;
 }
 
 .forgot-password {
