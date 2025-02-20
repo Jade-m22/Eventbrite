@@ -5,25 +5,51 @@ Attendance.delete_all
 Event.delete_all
 User.delete_all
 
-# Création de 10 utilisateurs avec des données aléatoires
 10.times do
+  first_name = Faker::Name.unique.first_name.downcase.gsub(/[^a-z]/, '')
+  last_name = Faker::Name.unique.last_name.downcase.gsub(/[^a-z]/, '')
+
+  email = "#{first_name}.#{last_name}@yopmail.com"
+
   User.create!(
-    email: Faker::Internet.unique.email,
+    email: email,
     password: 'password',
-    first_name: Faker::Name.first_name,
-    last_name: Faker::Name.last_name,
+    first_name: first_name.capitalize,
+    last_name: last_name.capitalize,
     description: Faker::Lorem.sentence(word_count: 15)
   )
 end
-
 puts "10 utilisateurs créés avec succès !"
 
-# Création de 10 événements
+event_titles = [
+  "Conférence sur l'IA et l'avenir du travail",
+  "Festival du film indépendant",
+  "Startup Weekend Marseille",
+  "Salon du Livre et de l'Innovation",
+  "Atelier de photographie urbaine",
+  "Concert acoustique sous les étoiles",
+  "Hackathon : Code for Good",
+  "Journée bien-être et méditation",
+  "Masterclass cuisine méditerranéenne",
+  "Exposition d'art contemporain",
+  "Salon du chocolat",
+  "Salon du mariage",
+  "Festival international du théâtre",
+  "Nuit des musées et patrimoine",
+  "Biennale de l’art numérique",
+  "Projection spéciale : Grands classiques du cinéma",
+  "Atelier d’écriture créative",
+  "Rencontre avec un auteur à succès",
+  "Festival de musique électro en plein air",
+  "Découverte de la calligraphie japonaise"
+]
+
 users = User.all
+
 10.times do
-  event_creator = users.sample # Choisir un utilisateur au hasard pour organiser l'événement
+  event_creator = users.sample
   Event.create!(
-    title: Faker::Lorem.sentence,
+    title: event_titles.sample,
     description: Faker::Lorem.sentence(word_count: 30),
     start_date: Faker::Time.forward(days: 5, period: :morning),
     duration: rand(1..5),

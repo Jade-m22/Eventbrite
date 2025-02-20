@@ -1,0 +1,32 @@
+.body {
+  font-family: 'Nunito', sans-serif;
+  background-color: #f8f9fa;
+}
+
+.profile-card {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  padding: 30px;
+  text-align: center;
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.profile-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.btn-custom {
+  background-color: #ecaacb;
+  color: rgb(0, 0, 0);
+  border-radius: 6px;
+  font-weight: bold;
+  padding: 10px 20px;
+  transition: background-color 0.3s ease;
+}
+
+.btn-custom:hover {
+  background-color: #4a0044;
+  color: white;
+}
