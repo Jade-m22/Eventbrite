@@ -5,6 +5,11 @@
   <%= f.hidden_field :reset_password_token %>
 
   <div class="mb-3">
+    <%= f.label :first_name, class: "form-label" %>
+    <%= f.text_field :first_name, class: "form-control", placeholder: "Prénom" %>
+  </div>
+
+  <div class="mb-3">
     <%= f.label :password, "Nouveau mot de passe", class: "form-label" %>
     <% if @minimum_password_length %>
       <small class="form-text text-muted">(Minimum <%= @minimum_password_length %> caractères)</small>

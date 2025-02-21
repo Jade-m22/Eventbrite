@@ -44,7 +44,7 @@
               <li><strong>Durée :</strong> <%= @event.duration %> heures</li>
               <li><strong>Prix :</strong> <%= @event.is_free? ? "Gratuit" : number_to_currency(@event.price, unit: "€") %></li>
               <li><strong>Lieu :</strong> <%= @event.location %></li>
-              <li><strong>Organisateur et contact :</strong> <%= @event.user.first_name %> <%= @event.user.last_name %>, <%= @event.user.email %></li>
+              <li><strong>Organisateur et contact :</strong> <%= @event.user.first_name %>, <%= @event.user.email %></li>
             </ul>
           </div>
 

@@ -12,7 +12,6 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   validates :first_name, presence: true
-  validates :last_name, presence: true
   validates :description, length: { maximum: 500 }
 
   def send_welcome_email
