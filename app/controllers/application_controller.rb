@@ -7,7 +7,7 @@ class ApplicationController < ActionController::Base
 
   def configure_permitted_parameters
     # Permet l'ajout des nouveaux champs dans Devise
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:first_name, :last_name, :description])
-    devise_parameter_sanitizer.permit(:account_update, keys: [:first_name, :last_name, :description])
+    devise_parameter_sanitizer.permit(:sign_up, keys: [ :first_name, :last_name, :description ])
+    devise_parameter_sanitizer.permit(:account_update, keys: [ :first_name, :last_name, :description ])
   end
 end

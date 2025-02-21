@@ -94,12 +94,17 @@ body {
 }
 
 @media (min-width: 992px) {
-  .col-md-4 {
-    flex: 0 0 calc(33.333% - 20px); /* 🔥 Assure 3 cartes par ligne */
+  .col-md-4-event {
+    flex: 0 0 calc(33.333% - 20px);
+    margin: 10px;
   }
 }
 
 /* 🎭 Effet au survol */
 .custom-card-event:hover {
   transform: translateY(-5px);
+}
+
+.col-md-4-event {
+  display: flex;
 }
