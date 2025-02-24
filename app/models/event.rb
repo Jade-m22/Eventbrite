@@ -10,6 +10,8 @@ class Event < ApplicationRecord
   validates :price, presence: true, inclusion: { in: 0..1000 }
   validates :location, presence: true
 
+  attribute :validated, :boolean, default: false
+
   def is_free?
     price == 0
   end

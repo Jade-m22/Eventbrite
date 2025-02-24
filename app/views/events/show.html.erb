@@ -73,7 +73,7 @@
             <%= link_to '⬅️ Retour', events_path, class: "btn btn-outline-secondary mt-3" %>
           </div>
 
-          <% if current_user == @event.user %>
+          <% if current_user == @event.user || current_user.admin? %>
             <div class="mt-4 text-center">
               <%= link_to "✏️ Modifier", edit_event_path(@event), class: "btn btn-warning me-2" %>
               <%= button_to "🗑️ Supprimer", event_path(@event), method: :delete, data: { confirm: "Es-tu sûr de vouloir supprimer cet événement ?" }, class: "btn btn-danger" %>

@@ -16,11 +16,15 @@ Rails.application.routes.draw do
   resources :events do
     collection do
       get :my_events
+      get :pending
     end
-    resources :event_pictures, only: [ :create ]
+    member do
+      patch :validate
+    end
+    resources :event_pictures, only: %i[create]
   end
 
-  resources :attendances, only: %i[ create show ]
+  resources :attendances, only: %i[create show]
 
   devise_scope :user do
     get "profil", to: "devise/registrations#show", as: :user_profile
@@ -29,7 +33,7 @@ Rails.application.routes.draw do
   get "static_pages/secret", to: "static_pages#secret", as: "static_pages_secret"
 
   get "manifest" => "rails/pwa#manifest", as: :pwa_manifest
-    get "service-worker" => "rails/pwa#service_worker", as: :pwa_service_worker
+  get "service-worker" => "rails/pwa#service_worker", as: :pwa_service_worker
 
   # Autres routes
   get "up" => "rails/health#show", as: :rails_health_check

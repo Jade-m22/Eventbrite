@@ -51,6 +51,13 @@
               <%= link_to "Mes événements", my_events_events_path, class: "nav-link" %>
             </li>
 
+            <% if current_user&.is_admin? %>
+              <li class="nav-item">
+                <%= link_to "Événements en attente", pending_events_path, class: "nav-link text-warning" %>
+              </li>
+            <% end %>
+
+
             <li class="nav-item">
               <%= form_with url: destroy_user_session_path, method: :delete, class: "d-inline" do %>
                 <%= submit_tag "Se déconnecter", class: "btn btn-danger" %>
